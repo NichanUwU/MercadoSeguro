@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MercadoSeguro - Plataforma de Servicios Locales</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .business-model {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .revenue-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .revenue-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--primary);
+        }
+
+        .revenue-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .growth-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+        }
+
+        .demo-section {
+            background: white;
+            padding: 4rem 0;
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .demo-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .demo-step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>La Revolución de los Servicios Locales en Chiapas</h1>
+                    <p>Conectamos el talento local con oportunidades de crecimiento económico, impulsando el desarrollo regional a través de la tecnología.</p>
+                    <div class="hero-buttons">
+                        <a href="trabajadores.html" class="btn">Ver Demostración</a>
+                        <a href="#modelo-negocio" class="btn btn-secondary">Modelo de Negocio</a>
+                    </div>
+                </div>
+                <div class="hero-image fade-in">
+                    <div class="hero-image-placeholder">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+                            <h3 style="color: white; margin-bottom: 0.5rem;">Potencial de Crecimiento</h3>
+                            <p style="color: rgba(255,255,255,0.8);">Mercado en expansión</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas de Crecimiento -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Potencial de Mercado Comprobado</h2>
+                <p>El sector de servicios locales representa una oportunidad de crecimiento significativa</p>
+            </div>
+            
+            <div class="growth-stats">
+                <div class="stat-card">
+                    <span class="stat-number">+25%</span>
+                    <p>Crecimiento anual del sector delivery</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">$25B+</span>
+                    <p>Pesos anuales en mercado digital</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">85%</span>
+                    <p>Penetración móvil en Chiapas</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">0</span>
+                    <p>Plataformas consolidadas en la región</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modelo de Negocio -->
+    <section id="modelo-negocio" class="business-model">
+        <div class="container">
+            <div class="section-title">
+                <h2>Modelo de Ingresos Sostenible</h2>
+                <p>Múltiples fuentes de ingresos escalables y complementarias</p>
+            </div>
+
+            <div class="revenue-cards">
+                <div class="revenue-card">
+                    <div class="revenue-icon">💼</div>
+                    <h3>Comisiones por Transacción</h3>
+                    <p>10-15% por servicio completado a través de la plataforma</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border-radius: 8px;">
+                        <small><strong>Proyección:</strong> $500K MXN/mes en Year 1</small>
+                    </div>
+                </div>
+
+                <div class="revenue-card">
+                    <div class="revenue-icon">⭐</div>
+                    <h3>Membresías Premium</h3>
+                    <p>Planes para proveedores con beneficios exclusivos</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border-radius: 8px;">
+                        <small><strong>Precios:</strong> $199-$499 MXN/mes</small>
+                    </div>
+                </div>
+
+                <div class="revenue-card">
+                    <div class="revenue-icon">🤝</div>
+                    <h3>Alianzas Estratégicas</h3>
+                    <p>Colaboraciones con negocios locales y restaurantes</p>
+                    <div style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border-radius: 8px;">
+                        <small><strong>Potencial:</strong> 50+ alianzas en Year 1</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fuentes Futuras -->
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 12px;">
+                <h3 style="margin-bottom: 1rem;">Diversificación Futura</h3>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div style="padding: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📢</div>
+                        <strong>Publicidad In-App</strong>
+                    </div>
+                    <div style="padding: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏷️</div>
+                        <strong>Marcas Reconocidas</strong>
+                    </div>
+                    <div style="padding: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
+                        <strong>Data Analytics</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demostración Interactiva -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Demostración de la Plataforma</h2>
+                <p>Experimenta el flujo completo de usuario en nuestra plataforma funcional</p>
+            </div>
+
+            <div class="demo-steps">
+                <div class="demo-step">
+                    <div class="step-number">1</div>
+                    <h3>Registro de Trabajadores</h3>
+                    <p>Sistema completo de registro y verificación de proveedores de servicios</p>
+                    <a href="registro.html" class="btn" style="margin-top: 1rem;">Ver Demo</a>
+                </div>
+
+                <div class="demo-step">
+                    <div class="step-number">2</div>
+                    <h3>Descubrimiento de Servicios</h3>
+                    <p>Interfaz intuitiva para encontrar y contratar servicios locales</p>
+                    <a href="trabajadores.html" class="btn" style="margin-top: 1rem;">Ver Demo</a>
+                </div>
+
+                <div class="demo-step">
+                    <div class="step-number">3</div>
+                    <h3>Sistema de Pagos</h3>
+                    <p>Checkout seguro con múltiples métodos de pago integrados</p>
+                    <a href="checkout.html" class="btn" style="margin-top: 1rem;">Ver Demo</a>
+                </div>
+
+                <div class="demo-step">
+                    <div class="step-number">4</div>
+                    <h3>Panel de Administración</h3>
+                    <p>Herramientas de gestión para supervisar la plataforma</p>
+                    <a href="admin.html" class="btn" style="margin-top: 1rem;">Ver Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estrategia de Crecimiento -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Estrategia de Crecimiento Regional</h2>
+                <p>Expansión progresiva con enfoque en la confianza y calidad</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Fase 1: Villaflores</h3>
+                    <p>Lanzamiento inicial con enfoque en validación del modelo y construcción de comunidad</p>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #f0f9ff; border-radius: 6px;">
+                        <small><strong>Meta:</strong> 100+ trabajadores registrados</small>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏙️</div>
+                    <h3>Fase 2: Chiapas Central</h3>
+                    <p>Expansión a Tuxtla Gutiérrez y ciudades principales del estado</p>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #f0f9ff; border-radius: 6px;">
+                        <small><strong>Meta:</strong> 500+ trabajadores</small>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌎</div>
+                    <h3>Fase 3: Sureste Mexicano</h3>
+                    <p>Escalamiento regional a estados vecinos con modelo probado</p>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #f0f9ff; border-radius: 6px;">
+                        <small><strong>Meta:</strong> 5,000+ trabajadores</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="fade-in">¿Listo para ser parte de la revolución de servicios locales?</h2>
+            <p class="fade-in">Únete a la plataforma que está transformando la economía regional</p>
+            <div class="cta-buttons">
+                <a href="registro.html" class="btn">Registrarse como Trabajador</a>
+                <a href="trabajadores.html" class="btn btn-secondary">Explorar Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

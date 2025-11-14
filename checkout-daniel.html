@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Mandados - MercadoSeguro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .checkout-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .service-summary {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-left: 4px solid #10b981;
+        }
+
+        .order-details {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .payment-method {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary);
+            background: #f0f9ff;
+        }
+
+        .price-breakdown {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding-top: 1rem;
+            border-top: 2px solid #e2e8f0;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container">
+        <div class="checkout-container">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step completed">1. Servicio</div>
+                <div class="step completed">2. Detalles</div>
+                <div class="step active">3. Pago</div>
+                <div class="step">4. Confirmación</div>
+            </div>
+
+            <h1>Finalizar Pedido - Mandados</h1>
+
+            <!-- Resumen del Servicio -->
+            <div class="service-summary">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="width: 60px; height: 60px; background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        🛵
+                    </div>
+                    <div>
+                        <h3 style="margin: 0; color: var(--primary);">Daniel de Jesús Hernández Vázquez</h3>
+                        <p style="margin: 0; color: var(--gray);">📞 9656597890 | ⭐ 4.5</p>
+                    </div>
+                </div>
+                
+                <div class="order-details">
+                    <h4 style="margin-bottom: 1rem;">📦 Pedido de Mandados - EXPO</h4>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <p style="margin: 0; font-weight: 500;">"Por favor, ve al Oxxo más cercano y compra:"</p>
+                        <ul style="margin: 0.5rem 0 0 0; padding-left: 1.5rem;">
+                            <li>2 aguas embotelladas</li>
+                            <li>1 bolsa de hielos</li>
+                            <li>1 paquete de galletas</li>
+                            <li>Lo que alcance con $100 pesos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario de Pedido -->
+            <div class="checkout-card">
+                <h3 style="margin-bottom: 1.5rem;">Detalles del Pedido</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">📍 Dirección de entrega</label>
+                    <input type="text" class="form-input" value="Stand MercadoSeguro - Feria del Emprendedor" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">📝 Instrucciones especiales</label>
+                    <textarea class="form-textarea" rows="3" readonly>ENTREGAR EN EL STAND PRINCIPAL DE MERCADOSEGURO - FERIA DEL EMPRENDEDOR</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">💰 Presupuesto máximo</label>
+                    <input type="text" class="form-input" value="$100 MXN" readonly>
+                </div>
+
+                <!-- Método de Pago -->
+                <div class="form-group">
+                    <label class="form-label">💳 Método de pago</label>
+                    <div class="payment-methods">
+                        <div class="payment-method selected" onclick="selectPayment(this)">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💵</div>
+                            Efectivo
+                        </div>
+                        <div class="payment-method" onclick="selectPayment(this)">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💳</div>
+                            Tarjeta
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desglose de Precios -->
+                <div class="price-breakdown">
+                    <h4 style="margin-bottom: 1rem;">Resumen de Pago</h4>
+                    <div class="price-item">
+                        <span>Servicio de mandados</span>
+                        <span>$50 MXN</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Productos (estimado)</span>
+                        <span>$100 MXN</span>
+                    </div>
+                    <div class="price-total">
+                        <span>Total a pagar:</span>
+                        <span style="color: var(--primary);">$150 MXN</span>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-top: 2rem;">
+                    <a href="trabajadores.html" class="btn btn-secondary">
+                        ← Cancelar
+                    </a>
+                    <a href="payment-success-daniel.html" class="btn" onclick="simulatePayment()">
+                        ✅ Confirmar Pedido - $150 MXN
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function selectPayment(element) {
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('selected');
+            });
+            element.classList.add('selected');
+        }
+
+        function simulatePayment() {
+            // Simular procesamiento de pago
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '🔄 Procesando...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                // La redirección se hará con el link
+            }, 1500);
+        }
+
+        // Cargar componentes
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('header', 'components/header.html');
+            loadComponent('footer', 'components/footer.html');
+        });
+    </script>
+</body>
+</html>

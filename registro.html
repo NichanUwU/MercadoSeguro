@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Trabajadores - MercadoSeguro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .registration-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .registration-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .registration-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .service-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .service-checkbox:hover {
+            border-color: var(--primary);
+        }
+
+        .service-checkbox input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--light-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .registration-form {
+                margin-top: -30px;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="registration-hero">
+        <div class="container">
+            <h1>Únete a MercadoSeguro</h1>
+            <p>Registra tus servicios y comienza a conectar con clientes en tu comunidad</p>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <div class="container">
+        <div class="registration-container">
+            <form class="registration-form" id="workerRegistrationForm">
+                <!-- Información Personal -->
+                <div class="form-section">
+                    <h3 class="section-title">Información Personal</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="nombre">Nombre completo *</label>
+                            <input type="text" id="nombre" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Correo electrónico *</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="ubicacion">Ubicación (Villaflores, Chiapas) *</label>
+                            <input type="text" id="ubicacion" class="form-input" value="Villaflores, Chiapas" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicios Ofrecidos -->
+                <div class="form-section">
+                    <h3 class="section-title">Servicios que Ofreces</h3>
+                    <div class="services-grid">
+                        <label class="service-checkbox">
+                            <input type="checkbox" name="servicios" value="fontaneria">
+                            <span>Fontanería</span>
+                        </label>
+                        <label class="service-checkbox">
+                            <input type="checkbox" name="servicios" value="electricidad">
+                            <span>Electricidad</span>
+                        </label>
+                        <label class="service-checkbox">
+                            <input type="checkbox" name="servicios" value="carpinteria">
+                            <span>Carpintería</span>
+                        </label>
+                        <label class="service-checkbox">
+                            <input type="checkbox" name="servicios" value="albanileria">
+                            <span>Albañilería</span>
+                        </label>
+                        <label class="service-checkbox">
+                            <input type="checkbox" name="servicios" value="jardineria">
+                            <span>Jardinería</span>
+                        </label>
+                        <label class="service-checkbox">
+                            <input type="checkbox" name="servicios" value="limpieza">
+                            <span>Limpieza</span>
+                        </label>
+                        <label class="service-checkbox">
+                            <input type="checkbox" name="servicios" value="clases">
+                            <span>Clases particulares</span>
+                        </label>
+                        <label class="service-checkbox">
+                            <input type="checkbox" name="servicios" value="reparaciones">
+                            <span>Reparaciones generales</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="otrosServicios">Otros servicios (especifica)</label>
+                        <input type="text" id="otrosServicios" class="form-input" placeholder="Ej: Corte de cabello, cuidado de niños, etc.">
+                    </div>
+                </div>
+
+                <!-- Experiencia y Descripción -->
+                <div class="form-section">
+                    <h3 class="section-title">Experiencia y Descripción</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="experiencia">Años de experiencia</label>
+                        <select id="experiencia" class="form-select">
+                            <option value="">Selecciona</option>
+                            <option value="menos-1">Menos de 1 año</option>
+                            <option value="1-3">1-3 años</option>
+                            <option value="3-5">3-5 años</option>
+                            <option value="5-10">5-10 años</option>
+                            <option value="mas-10">Más de 10 años</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="descripcion">Descripción de tus servicios *</label>
+                        <textarea id="descripcion" class="form-textarea" placeholder="Describe detalladamente los servicios que ofreces, tus especialidades, etc." required></textarea>
+                    </div>
+                </div>
+
+                <!-- Fotografías -->
+                <div class="form-section">
+                    <h3 class="section-title">Fotografías de tu Trabajo</h3>
+                    <div class="file-upload" onclick="document.getElementById('fotos').click()">
+                        <div class="upload-icon">📷</div>
+                        <p>Haz clic para subir fotos de tus trabajos</p>
+                        <small>Máximo 5 fotos (JPEG, PNG)</small>
+                        <input type="file" id="fotos" multiple accept="image/*">
+                    </div>
+                    <div id="preview-container" style="margin-top: 1rem;"></div>
+                </div>
+
+                <!-- Disponibilidad -->
+                <div class="form-section">
+                    <h3 class="section-title">Disponibilidad</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="horario">Horario de atención</label>
+                            <input type="text" id="horario" class="form-input" placeholder="Ej: Lunes a Viernes 8:00 - 18:00">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="radio">Radio de servicio (km)</label>
+                            <select id="radio" class="form-select">
+                                <option value="5">5 km</option>
+                                <option value="10" selected>10 km</option>
+                                <option value="15">15 km</option>
+                                <option value="20">20 km</option>
+                                <option value="todo">Todo Villaflores</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn submit-btn">Registrarme como Trabajador</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="js/sheets-api.js"></script>
+<script>
+    // Probar conexión al cargar la página
+    document.addEventListener('DOMContentLoaded', async function() {
+        const connectionTest = await JSONBinAPI.testConnection();
+        if (connectionTest.success) {
+            console.log('✅ Conectado a JSONBin.io');
+        } else {
+            console.warn('⚠️ Modo offline: Los datos se guardarán localmente');
+        }
+    });
+
+    // Manejar la subida de fotos
+    document.getElementById('fotos').addEventListener('change', function(e) {
+        const previewContainer = document.getElementById('preview-container');
+        previewContainer.innerHTML = '';
+        
+        Array.from(e.target.files).forEach(file => {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = '8px';
+                    img.style.marginRight = '10px';
+                    img.style.marginBottom = '10px';
+                    previewContainer.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+
+    // Manejar el envío del formulario
+    document.getElementById('workerRegistrationForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Mostrar loading
+        const submitBtn = this.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Registrando...';
+        submitBtn.disabled = true;
+        
+        const formData = {
+            nombre: document.getElementById('nombre').value,
+            telefono: document.getElementById('telefono').value,
+            email: document.getElementById('email').value,
+            servicios: Array.from(document.querySelectorAll('input[name="servicios"]:checked')).map(cb => cb.value),
+            experiencia: document.getElementById('experiencia').value,
+            descripcion: document.getElementById('descripcion').value,
+            horario: document.getElementById('horario').value,
+            radio: document.getElementById('radio').value,
+            valoracion: 0,
+            trabajosRealizados: 0
+        };
+        
+        try {
+            const result = await JSONBinAPI.saveWorker(formData);
+            
+            if (result.success) {
+                alert('¡Registro exitoso! Ahora aparecerás en nuestro listado de trabajadores.');
+                window.location.href = 'trabajadores.html';
+            } else {
+                alert('Error: ' + result.message);
+            }
+        } catch (error) {
+            console.error('Error en el registro:', error);
+            alert('Error al registrar. Por favor intenta nuevamente.');
+        } finally {
+            // Restaurar botón
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+</body>
+</html>

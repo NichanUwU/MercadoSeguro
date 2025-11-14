@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Trabajadores - MercadoSeguro</title>
+    <style>
+        .admin-container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+        .worker-item { 
+            background: white; 
+            padding: 1.5rem; 
+            margin-bottom: 1rem; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid #2563eb;
+        }
+        .worker-header { display: flex; justify-content: between; align-items: center; margin-bottom: 1rem; }
+        .worker-actions { display: flex; gap: 0.5rem; }
+        .btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-edit { background: #f59e0b; color: white; }
+        .btn-delete { background: #ef4444; color: white; }
+        .edit-form { display: none; margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 4px; }
+        .form-group { margin-bottom: 1rem; }
+        .form-input { width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Administrar Trabajadores</h1>
+        <div id="workersList"></div>
+    </div>
+
+    <script src="js/sheets-api.js"></script>
+    <script>
+        let allWorkers = [];
+
+        // Cargar trabajadores
+        async function loadWorkers() {
+            try {
+                allWorkers = await JSONBinAPI.getWorkers();
+                displayWorkers();
+            } catch (error) {
+                console.error('Error cargando trabajadores:', error);
+                alert('Error al cargar trabajadores');
+            }
+        }
+
+        // Mostrar trabajadores
+        function displayWorkers() {
+            const workersList = document.getElementById('workersList');
+            workersList.innerHTML = '';
+
+            if (allWorkers.length === 0) {
+                workersList.innerHTML = '<p>No hay trabajadores registrados</p>';
+                return;
+            }
+
+            allWorkers.forEach((worker, index) => {
+                const workerDiv = document.createElement('div');
+                workerDiv.className = 'worker-item';
+                workerDiv.innerHTML = `
+                    <div class="worker-header">
+                        <h3>${worker.nombre} - ${worker.telefono}</h3>
+                        <div class="worker-actions">
+                            <button class="btn btn-edit" onclick="toggleEditForm(${index})">Editar</button>
+                            <button class="btn btn-delete" onclick="deleteWorker(${index})">Eliminar</button>
+                        </div>
+                    </div>
+                    <p><strong>Servicios:</strong> ${worker.servicios.join(', ')}</p>
+                    <p><strong>Descripción:</strong> ${worker.descripcion}</p>
+                    <p><strong>Valoración:</strong> ${worker.valoracion} ⭐</p>
+                    
+                    <div id="editForm-${index}" class="edit-form">
+                        <h4>Editar Trabajador</h4>
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" class="form-input" id="editNombre-${index}" value="${worker.nombre}">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono:</label>
+                            <input type="text" class="form-input" id="editTelefono-${index}" value="${worker.telefono}">
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción:</label>
+                            <textarea class="form-input" id="editDescripcion-${index}">${worker.descripcion}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Valoración:</label>
+                            <input type="number" class="form-input" id="editValoracion-${index}" value="${worker.valoracion}" min="0" max="5" step="0.1">
+                        </div>
+                        <button class="btn" onclick="saveWorkerEdit(${index})">Guardar Cambios</button>
+                        <button class="btn" onclick="toggleEditForm(${index})">Cancelar</button>
+                    </div>
+                `;
+                workersList.appendChild(workerDiv);
+            });
+        }
+
+        // Mostrar/ocultar formulario de edición
+        function toggleEditForm(index) {
+            const form = document.getElementById(`editForm-${index}`);
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Guardar cambios de un trabajador
+        async function saveWorkerEdit(index) {
+            const worker = allWorkers[index];
+            
+            worker.nombre = document.getElementById(`editNombre-${index}`).value;
+            worker.telefono = document.getElementById(`editTelefono-${index}`).value;
+            worker.descripcion = document.getElementById(`editDescripcion-${index}`).value;
+            worker.valoracion = parseFloat(document.getElementById(`editValoracion-${index}`).value);
+
+            try {
+                // Actualizar en JSONBin
+                const response = await fetch(`https://api.jsonbin.io/v3/b/69064896ae596e708f3d107c`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': '$2a$10$sSJtWMrOWB0ji.mahbccs.yEsl7ZMu9Iun/D.fTR29gUyDgfNYomq',
+                        'X-Bin-Versioning': 'false'
+                    },
+                    body: JSON.stringify(allWorkers)
+                });
+
+                if (response.ok) {
+                    alert('Cambios guardados exitosamente');
+                    toggleEditForm(index);
+                    // Actualizar localStorage
+                    localStorage.setItem('MercadoSeguro_workers', JSON.stringify(allWorkers));
+                } else {
+                    throw new Error('Error guardando cambios');
+                }
+            } catch (error) {
+                console.error('Error guardando cambios:', error);
+                alert('Error al guardar cambios');
+            }
+        }
+
+        // Eliminar trabajador
+        async function deleteWorker(index) {
+            if (!confirm('¿Estás seguro de que quieres eliminar este trabajador?')) {
+                return;
+            }
+
+            allWorkers.splice(index, 1);
+
+            try {
+                const response = await fetch(`https://api.jsonbin.io/v3/b/69064896ae596e708f3d107c`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': '$2a$10$sSJtWMrOWB0ji.mahbccs.yEsl7ZMu9Iun/D.fTR29gUyDgfNYomq',
+                        'X-Bin-Versioning': 'false'
+                    },
+                    body: JSON.stringify(allWorkers)
+                });
+
+                if (response.ok) {
+                    alert('Trabajador eliminado exitosamente');
+                    loadWorkers(); // Recargar la lista
+                } else {
+                    throw new Error('Error eliminando trabajador');
+                }
+            } catch (error) {
+                console.error('Error eliminando trabajador:', error);
+                alert('Error al eliminar trabajador');
+            }
+        }
+
+        // Cargar trabajadores al iniciar
+        document.addEventListener('DOMContentLoaded', loadWorkers);
+    </script>
+</body>
+</html>

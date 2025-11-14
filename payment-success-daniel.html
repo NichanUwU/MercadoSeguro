@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Exitoso - MercadoSeguro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .success-container {
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .success-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 2px solid #10b981;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #10b981;
+            margin-bottom: 1.5rem;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f59e0b;
+            animation: confetti-fall 3s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .receipt {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .next-steps {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f0f9ff;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Success Content -->
+    <div class="container">
+        <div class="success-container">
+            <div class="success-card">
+                <div class="success-icon">✅</div>
+                
+                <h1>¡Pago Completado!</h1>
+                <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 2rem;">
+                    Tu servicio ha sido confirmado exitosamente
+                </p>
+
+                <!-- Recibo -->
+                <div class="receipt">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);">Recibo de Pago</h3>
+                    
+                    <div class="receipt-item">
+                        <span>Número de transacción:</span>
+                        <span id="transactionId">MS-<span id="transactionNumber">001234</span></span>
+                    </div>
+                    <div class="receipt-item">
+                        <span>Método de pago:</span>
+                        <span id="paymentMethod">Tarjeta</span>
+                    </div>
+                    <div class="receipt-item">
+                        <span>Monto total:</span>
+                        <span style="font-weight: bold;" id="paymentAmount">$450 MXN</span>
+                    </div>
+                    <div class="receipt-item">
+                        <span>Fecha:</span>
+                        <span id="paymentDate">16 de Noviembre, 2024</span>
+                    </div>
+                    <div class="receipt-item">
+                        <span>Estado:</span>
+                        <span style="color: #10b981; font-weight: bold;">✓ Completado</span>
+                    </div>
+                </div>
+
+                <!-- Próximos pasos -->
+                <div class="next-steps">
+                    <h3 style="margin-bottom: 1rem;">Próximos pasos</h3>
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <strong>Recibirás un correo de confirmación</strong><br>
+                            <small>Con todos los detalles de tu servicio</small>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <strong>El técnico se pondrá en contacto</strong><br>
+                            <small>En las próximas 24 horas para coordinar</small>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <strong>Prepara el área de trabajo</strong><br>
+                            <small>Para que el servicio sea más eficiente</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de acción -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                    <a href="trabajadores.html" class="btn btn-secondary">
+                        Buscar Más Servicios
+                    </a>
+                    <a href="index.html" class="btn">
+                        Ir al Inicio
+                    </a>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: var(--light); border-radius: 8px;">
+                    <p style="margin: 0; font-size: 0.9rem;">
+                        ¿Tienes alguna pregunta? <br>
+                        <strong>📞 Llámanos: (961) 123-4567</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Crear confeti
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = getRandomColor();
+                    confetti.style

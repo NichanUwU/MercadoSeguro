@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación - MercadoSeguro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .presentation-hero {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .slide {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 0;
+        }
+
+        .slide-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .demo-preview {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Simplificado -->
+    <header style="background: #1e293b;">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">MS</div>
+                    <div class="logo-text" style="color: white;">Mercado<span style="color: #10b981;">Seguro</span></div>
+                </div>
+                <div style="color: white; font-weight: 500;">
+                    Presentación para Expo Emprendedores
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Slide 1: Portada -->
+    <section class="presentation-hero">
+        <div class="slide-content">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">MercadoSeguro</h1>
+            <p style="font-size: 1.5rem; margin-bottom: 2rem; opacity: 0.9;">
+                Revolucionando los Servicios Locales en Chiapas
+            </p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <div style="background: rgba(255,255,255,0.1); padding: 1rem 2rem; border-radius: 8px;">
+                    <strong>Mercado:</strong> $25B+ pesos anuales
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 1rem 2rem; border-radius: 8px;">
+                    <strong>Crecimiento:</strong> +25% anual
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 1rem 2rem; border-radius: 8px;">
+                    <strong>Región:</strong> Villaflores, Chiapas
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">1</div>
+    </section>
+
+    <!-- Slide 2: Problema -->
+    <section class="slide" style="background: #f8fafc;">
+        <div class="slide-content">
+            <h2 style="text-align: center; margin-bottom: 3rem;">El Problema: Economía Local Desconectada</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem;">❌</div>
+                    <h3>Falta de Digitalización</h3>
+                    <p>85% de los servicios locales operan de manera tradicional sin presencia digital</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem;">🔍</div>
+                    <h3>Dificultad para Encontrar</h3>
+                    <p>Los usuarios pierden tiempo buscando servicios confiables en su localidad</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem;">💸</div>
+                    <h3>Pérdida de Oportunidades</h3>
+                    <p>Trabajadores calificados no maximizan su potencial de ingresos</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem;">🏪</div>
+                    <h3>Comercios Desconectados</h3>
+                    <p>Negocios locales sin acceso a plataformas digitales de servicios</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">2</div>
+    </section>
+
+    <!-- Slide 3: Solución -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Nuestra Solución: Plataforma Integral</h2>
+            
+            <div class="highlight">
+                <h3 style="margin-bottom: 1rem;">"Conectamos el talento local con oportunidades de crecimiento económico"</h3>
+                <p>Una plataforma que digitaliza y optimiza el mercado de servicios locales</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Para Trabajadores</h3>
+                    <p>Registro sencillo, mayor visibilidad y acceso a más clientes</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Para Usuarios</h3>
+                    <p>Encuentra servicios confiables rápidamente con sistema de valoraciones</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Para Negocios</h3>
+                    <p>Alianzas estratégicas y acceso a nueva base de clientes</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">3</div>
+    </section>
+
+    <!-- Slide 4: Demostración -->
+    <section class="slide" style="background: #f8fafc;">
+        <div class="slide-content">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Demostración en Vivo</h2>
+            
+            <div class="demo-preview">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Flujo Completo de la Plataforma</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <a href="registro.html" class="btn" style="text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📝</div>
+                        Registro
+                    </a>
+                    <a href="trabajadores.html" class="btn" style="text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+                        Búsqueda
+                    </a>
+                    <a href="checkout.html" class="btn" style="text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">💳</div>
+                        Pago
+                    </a>
+                    <a href="admin.html" class="btn" style="text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚙️</div>
+                        Admin
+                    </a>
+                </div>
+
+                <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 8px;">
+                    <h4 style="margin-bottom: 1rem;">Características Técnicas:</h4>
+                    <ul style="columns: 2; gap: 2rem;">
+                        <li>✅ Interfaz responsive</li>
+                        <li>✅ Base de datos en la nube</li>
+                        <li>✅ Sistema de pagos integrado</li>
+                        <li>✅ Panel de administración</li>
+                        <li>✅ Diseño moderno y profesional</li>
+                        <li>✅ Optimizado para móviles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">4</div>
+    </section>
+
+    <!-- Slide 5: Modelo de Negocio -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Modelo de Ingresos Multi-fuente</h2>
+            
+            <div class="revenue-cards">
+                <div class="revenue-card">
+                    <div class="revenue-icon">💼</div>
+                    <h3>Comisiones (10-15%)</h3>
+                    <p>Por transacción completada</p>
+                    <div style="margin-top: 1rem;">
+                        <strong>Proyección Year 1:</strong><br>
+                        $500K MXN/mes
+                    </div>
+                </div>
+
+                <div class="revenue-card">
+                    <div class="revenue-icon">⭐</div>
+                    <h3>Membresías Premium</h3>
+                    <p>Planes $199-$499 MXN/mes</p>
+                    <div style="margin-top: 1rem;">
+                        <strong>Meta Year 1:</strong><br>
+                        500 suscriptores
+                    </div>
+                </div>
+
+                <div class="revenue-card">
+                    <div class="revenue-icon">🤝</div>
+                    <h3>Alianzas Estratégicas</h3>
+                    <p>Negocios locales y restaurantes</p>
+                    <div style="margin-top: 1rem;">
+                        <strong>Objetivo:</strong><br>
+                        50+ alianzas
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #f0f9ff; border-radius: 12px;">
+                <h3>Potencial de Crecimiento Exponencial</h3>
+                <p>Diversificación hacia publicidad, data analytics y colaboraciones con marcas reconocidas</p>
+            </div>
+        </div>
+        <div class="slide-number">5</div>
+    </section>
+
+    <!-- Slide 6: Estrategia y Cierre -->
+    <section class="slide" style="background: linear-gradient(135deg, #2563eb, #10b981); color: white;">
+        <div class="slide-content">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Estrategia de Crecimiento Regional</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📍</div>
+                    <h3>Fase 1: Villaflores</h3>
+                    <p>Validación y construcción de comunidad</p>
+                    <div style="margin-top: 1rem; background: rgba(255,255,255,0.2); padding: 0.5rem; border-radius: 6px;">
+                        <small>100+ trabajadores</small>
+                    </div>
+                </div>
+
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🏙️</div>
+                    <h3>Fase 2: Chiapas</h3>
+                    <p>Expansión a ciudades principales</p>
+                    <div style="margin-top: 1rem; background: rgba(255,255,255,0.2); padding: 0.5rem; border-radius: 6px;">
+                        <small>500+ trabajadores</small>
+                    </div>
+                </div>
+
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🌎</div>
+                    <h3>Fase 3: Sureste</h3>
+                    <p>Escalamiento regional</p>
+                    <div style="margin-top: 1rem; background: rgba(255,255,255,0.2); padding: 0.5rem; border-radius: 6px;">
+                        <small>5,000+ trabajadores</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight" style="background: rgba(255,255,255,0.1);">
+                <h2>¡Gracias por su atención!</h2>
+                <p style="font-size: 1.2rem;">¿Preguntas?</p>
+                <div style="margin-top: 2rem;">
+                    <a href="index.html" class="btn" style="background: white; color: var(--primary);">
+                        Explorar Plataforma Completa
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">6</div>
+    </section>
+
+    <!-- Navegación -->
+    <div class="navigation">
+        <button onclick="window.location.href='index.html'" class="btn btn-secondary">
+            ← Volver al Sitio
+        </button>
+        <button onclick="window.scrollTo(0,0)" class="btn">
+            ↺ Reiniciar Presentación
+        </button>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
